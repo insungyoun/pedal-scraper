@@ -12,7 +12,6 @@ class InvalidInputException(Exception):
     """Raised when the user's input is neither Y nor N"""
     pass
 
-free_2d_yes = False # If the input for free 2-day shipping only is 'Y', change to True
 def modify_url(link: str, preference: str) -> None:
     """Modifies the url 'link' according to the user preference 'preference'
     :param link: the url for modification
@@ -66,16 +65,16 @@ def modify_url(link: str, preference: str) -> None:
                     price_max = 0.00
                     while True:
                         try:
-                            price_min = float(input("Enter minimum price (No signs ($/-/+)):\n")) # THIS FAILS, MODIFY IT
-                        except TypeError:
+                            price_min = float(input("Enter minimum price (No signs ($/-/+)):\n"))
+                        except ValueError:
                             print("Please enter a valid price (No signs ($/-/+)).\n")
                             continue
                         else:
                             break
                     while True:
                         try:
-                            price_max = float(input("Enter maximum price (No signs ($/-/+)):\n")) # THIS FAILS, MODIFY IT
-                        except TypeError:
+                            price_max = float(input("Enter maximum price (No signs ($/-/+)):\n"))
+                        except ValueError:
                             print("Please enter a valid price (No signs ($/-/+)).\n")
                             continue
                         else:
