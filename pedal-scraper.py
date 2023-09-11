@@ -96,7 +96,7 @@ def modify_url(link: str, preference: str) -> None:
                         break
             break
 
-# Here we call 'modify_url' multiple times
+# Here is the code for the user input dialog, where we call 'modify_url' multiple times
 modify_url(url, "Search Term")
 modify_url(url, "Free 2-Day Shipping")
 modify_url(url, "Price Range")
@@ -109,6 +109,15 @@ session = HTMLSession()
 response = session.get(url)
 response.html.render(sleep=1, keep_page=True, scrolldown=2) # sleep and scrolldown values may noy work, experiment further
 products = response.html.find('.grid-card')
+
+# Here, the data stored in 'products' will be parsed
+# The name of the pedal will be before the first newline character '\n'
+# The price of the pedal will be after the first newline character and before the second newline character
+# The condition of the pedal will be after the second newline character and before the third newline character
+for product in products:
+    pedal_info = product.text
+    pedal_link = product.absolute_links
+
 
 # Here, testing is done (will be removed when project completed)
 count = 0
